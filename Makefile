@@ -12,10 +12,10 @@ config.json v1: ${CONFIG_DIR}
 
 allocate: v1 config.json
 	@python manage_jacuzzis.py && \
-	python allocate.py --db ${DB_URL} > allocate.log
+	python allocate.py --db ${DB_URL} > ${CONFIG_DIR}/allocate.log
 
 commit: allocate
-	@if [ -s allocate.log ]; then \
+	@if [ -s ${CONFIG_DIR}/allocate.log ]; then \
 		pushd ${CONFIG_DIR}; \
 		git add -A v1 config.json; \
 		git commit --author="allocator <no-reply@mozilla.com>" -q -F allocate.log; \
