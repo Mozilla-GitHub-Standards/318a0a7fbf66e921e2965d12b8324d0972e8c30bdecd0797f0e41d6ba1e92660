@@ -7,8 +7,8 @@ update-config: ${CONFIG_DIR}
 	@pushd ${CONFIG_DIR}; git pull; popd
 
 config.json v1: ${CONFIG_DIR}
-	@ln -s ${CONFIG_DIR}/config.json .
-	@ln -s ${CONFIG_DIR}/v1 .
+	@ln -sf ${CONFIG_DIR}/config.json .
+	@ln -sf ${CONFIG_DIR}/v1 .
 
 allocate: v1 config.json
 	@python manage_jacuzzis.py && \
