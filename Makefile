@@ -1,14 +1,12 @@
-CONFIG_DIR=/tmp/releng-jacuzzis-config
-
 all: update-config allocate commit push
 
 ${CONFIG_DIR}:
 	@git clone ${CONFIG_REPO} ${CONFIG_DIR}
 
-update-config: ${CONFIG_DIR} 
+update-config: ${CONFIG_DIR}
 	@pushd ${CONFIG_DIR}; git pull; popd
 
-config.json v1: ${CONFIG_DIR} 
+config.json v1: ${CONFIG_DIR}
 	@ln -s ${CONFIG_DIR}/config.json .
 	@ln -s ${CONFIG_DIR}/v1 .
 
