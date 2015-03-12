@@ -11,8 +11,8 @@ config.json v1: ${CONFIG_DIR}
 	@ln -sf ${CONFIG_DIR}/v1 .
 
 allocate: v1 config.json
-	@python manage_jacuzzis.py && \
-	python allocate.py --db ${DB_URL} > ${CONFIG_DIR}/allocate.log
+	@python allocate.py --db ${DB_URL} > ${CONFIG_DIR}/allocate.log && \
+	python manage_jacuzzis.py
 
 commit: allocate
 	@if [ -s ${CONFIG_DIR}/allocate.log ]; then \
